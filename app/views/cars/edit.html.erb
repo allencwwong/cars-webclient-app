@@ -1,0 +1,7 @@
+<%= form_tag "/cars/#{@car.id}", method: :patch do %>
+  Car Maker: <%= text_field_tag :car_maker, @car.car_maker %><br />
+  Car Model : <%= text_field_tag :car_model, @car.car_model %><br />
+  Year : <%= text_field_tag :year, @car.car_year%><br />
+  Color    : <%= text_field_tag :color, @car.car_color%><br />
+  <%= submit_tag %>
+  <% end %>

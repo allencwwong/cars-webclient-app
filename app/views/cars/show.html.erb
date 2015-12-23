@@ -1,0 +1,7 @@
+
+Maker: <%= @car.car_maker %>
+Model: <%= @car.car_model %>
+Year: <%= @car.car_year %>
+Color: <%= @car.car_color %>
+
+<%= link_to "Delete" , "/cars/#{params[:id]}", method: :delete %>

@@ -1,0 +1,7 @@
+<%= form_tag '/cars' , method: :post do %>
+  Car Maker: <%= text_field_tag :car_maker %><br />
+  Car Model : <%= text_field_tag :car_model %><br />
+  Year : <%= text_field_tag :year %><br />
+  Color    : <%= text_field_tag :color %><br />
+  <%= submit_tag %>
+  <% end %>
