@@ -12,13 +12,13 @@ attr_accessor :car_maker, :car_model, :car_year, :car_color, :id
   end
 
   def self.find(id)
-    car_hash = Unirest.get("http://localhost:3000/api/v1/cars/#{id}.json").body
+    car_hash = Unirest.get("#{ENV['API_BASE_URL']}/cars/#{id}.json").body
     Car.new(car_hash)
   end
 
   def self.all
     cars = []
-    car_hashes = Unirest.get("http://localhost:3000/api/v1/cars.json").body 
+    car_hashes = Unirest.get("#{ENV['API_BASE_URL']}/cars.json").body 
     car_hashes.each do | hash |
       cars << Car.new(hash)
     end 
@@ -27,18 +27,18 @@ attr_accessor :car_maker, :car_model, :car_year, :car_color, :id
 
   def self.create(attributes)
 
-  car_hash = Unirest.post("http://localhost:3000/api/v1/cars.json", headers:{ "Accept" => "application/json" }, parameters: attributes).body
+  car_hash = Unirest.post("#{ENV['API_BASE_URL']}/cars.json", headers:{ "Accept" => "application/json" }, parameters: attributes).body
   car = Car.new(car_hash)
 
   end
 
   def update(attributes)
-    car_hash = Unirest.patch("http://localhost:3000/api/v1/cars.json", headers:{ "Accept" => "application/json" }, parameters: attributes).body
+    car_hash = Unirest.patch("#{ENV['API_BASE_URL']}/cars.json", headers:{ "Accept" => "application/json" }, parameters: attributes).body
     Car.new(car_hash)
   end
 
   def destroy
-    Unirest.delete("http://localhost:3000/api/v1/cars/#{id}.json").body
+    Unirest.delete("#{ENV['API_BASE_URL']}/cars/#{id}.json").body
   end
 
 end
